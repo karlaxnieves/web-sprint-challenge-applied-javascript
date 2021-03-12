@@ -1,3 +1,5 @@
+
+
 const Card = (article) => {
   const card = document.createElement("div");
   const headline = document.createElement("div");
@@ -16,6 +18,16 @@ const Card = (article) => {
   author.appendChild(imageContainer);
   imageContainer.appendChild(authorPhoto);
   author.appendChild(authorName);
+
+  headline.textContent = article.headline;
+  authorPhoto.src = article.authorPhoto;
+  authorName.textContent = `By: ${artcile.authorName}`;
+
+  card.addEventListener("click", (event) => {
+    card.classList.toggle("headline")
+  });
+
+  return card
 }
 
 // TASK 5
@@ -38,15 +50,27 @@ const Card = (article) => {
 
 
 
+
+// TASK 6
+// ---------------------
+// Implement this function that takes a css selector as its only argument.
+// It should obtain articles from this endpoint: `https://lambda-times-api.herokuapp.com/articles`
+// However, the articles do not come organized in a single, neat array. Inspect the response closely!
+// Create a card from each and every article object in the response, using the Card component.
+// Append each card to the element in the DOM that matches the selector passed to the function.
+//
+
+const entryPoint = document.querySelector(".cards-container")
+
 const cardAppender = (selector) => {
-  // TASK 6
-  // ---------------------
-  // Implement this function that takes a css selector as its only argument.
-  // It should obtain articles from this endpoint: `https://lambda-times-api.herokuapp.com/articles`
-  // However, the articles do not come organized in a single, neat array. Inspect the response closely!
-  // Create a card from each and every article object in the response, using the Card component.
-  // Append each card to the element in the DOM that matches the selector passed to the function.
-  //
+  entryPoint.appendChild(Card);
+
 }
+
+import axios from "axios";
+
+axios
+  .get(`https://lambda-times-api.herokuapp.com/articles`)
+
 
 export { Card, cardAppender }
