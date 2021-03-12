@@ -13,12 +13,15 @@
 // </div>
 //
 
+const entryPoint = document.querySelector(".tabs-container")
+
 const Tabs = (topics) => {
   const topicsClass = document.createElement("div");
   const js = document.createElement("div");
   const boot = document.createElement("div");
   const tech = document.createElement("div");
 
+  entryPoint.appendChild(topicsClass)
   topicsClass.appendChild(js);
   topicsClass.appendChild(boot);
   topicsClass.appendChild(tech);
@@ -51,7 +54,7 @@ const tabsAppender = (selector) => {
   let topics = document.createElement('li');
 
 
-  tabs.classList.add("tabs")
+  tabs.classList.add(Tabs);
 
   entryPoint.appendChild(tabs);
   tabs.appendChild(holder);
@@ -68,14 +71,13 @@ const tabsAppender = (selector) => {
 
 import axios from "axios";
 
-const topics = ['javascript', 'bootstrap', 'technology', 'jquery', 'node.js'];
-
 topics.forEach(function () {
   axios
     .get(`https://lambda-times-api.herokuapp.com/topics`)
     .then((res) => {
-      const tabs = tabsAppender(res.data);
-      entryPoint.appendChild(tabs);
+      console.log(res)
+      // const tabs = tabsAppender(res.data);
+      // entryPoint.appendChild(tabs);
     })
     .catch((err) => {
       console.log(err);

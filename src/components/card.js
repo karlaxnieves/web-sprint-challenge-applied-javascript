@@ -63,14 +63,43 @@ const Card = (article) => {
 const entryPoint = document.querySelector(".cards-container")
 
 const cardAppender = (selector) => {
-  entryPoint.appendChild(Card);
+  entryPoint.appendChild(card);
+
+  card[0].textContent = articles['bootstrap']
+  card[1].textContent = articles['javascript']
+  card[2].textContent = articles['jquery']
+  card[3].textContent = articles['node']
+  card[4].textContent = articles['technology']
+
+  authorName[0].nextElementSibling.textContent = articles['bootstrap']['authorName']
+  authorName[1].nextElementSibling.textContent = articles['javascript']['authorName']
+  authorName[2].nextElementSibling.textContent = articles['jquery']['authorName']
+  authorName[3].nextElementSibling.textContent = articles['node']['authorName']
+  authorName[4].nextElementSibling.textContent = articles['technology']['authorName']
+
+  authorPhoto[0].nextElementSibling.textContent = articles['bootstrap']['authorPhoto']
+  authorPhoto[1].nextElementSibling.textContent = articles['javascript']['authorPhoto']
+  authorPhoto[2].nextElementSibling.textContent = articles['jquery']['authorPhoto']
+  authorPhoto[3].nextElementSibling.textContent = articles['node']['authorPhoto']
+  authorPhoto[4].nextElementSibling.textContent = articles['technology']['authorPhoto']
 
 }
 
 import axios from "axios";
 
-axios
-  .get(`https://lambda-times-api.herokuapp.com/articles`)
+
+articlesArray.forEach(() => {
+  axios
+    .get(`https://lambda-times-api.herokuapp.com/articles`)
+    .then((res) => {
+      const card = Card(res.data)
+      entryPoint.appendChild(card)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+})
+
 
 
 export { Card, cardAppender }
