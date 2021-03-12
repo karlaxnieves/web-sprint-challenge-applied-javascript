@@ -4,6 +4,18 @@ const Card = (article) => {
   const author = document.createElement("div");
   const imageContainer = document.createElement("div");
   const authorPhoto = document.createElement("img");
+  const authorName = document.createElement("span");
+
+  card.classList.add('card');
+  headline.classList.add('headline');
+  author.classList.add('author');
+  imageContainer.classList.add('img-container');
+
+  card.appendChild(headline);
+  card.appendChild(author);
+  author.appendChild(imageContainer);
+  imageContainer.appendChild(authorPhoto);
+  author.appendChild(authorName);
 }
 
 // TASK 5
@@ -14,16 +26,16 @@ const Card = (article) => {
 // The text inside elements will be set using their `textContent` property (NOT `innerText`).
 // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
 //
-// <div class="card">
-//   <div class="headline">{ headline }</div>
-//   <div class="author">
-//     <div class="img-container">
-//       <img src={ authorPhoto }>
-//     </div>
-//     <span>By { authorName }</span>
-//   </div>
-// </div>
-//
+/* <div class="card">
+  <div class="headline">{ headline }</div>
+  <div class="author">
+    <div class="img-container">
+      <img src={ authorPhoto }>
+    </div>
+    <span>By { authorName }</span>
+  </div>
+</div> */
+
 
 
 const cardAppender = (selector) => {
