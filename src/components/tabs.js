@@ -53,6 +53,7 @@ const tabsAppender = (selector) => {
 
   tabs.classList.add("tabs")
 
+  entryPoint.appendChild(tabs);
   tabs.appendChild(holder);
   holder.appendChild(topics);
 
@@ -62,10 +63,23 @@ const tabsAppender = (selector) => {
   topics[3].textContent = selector[3];
   topics[4].textContent = selector[4];
 
-
   return tabs;
 }
 
-axio
+import axios from "axios";
+
+const topics = ['javascript', 'bootstrap', 'technology', 'jquery', 'node.js'];
+
+topics.forEach(function () {
+  axios
+    .get(`https://lambda-times-api.herokuapp.com/topics`)
+    .then((res) => {
+      const tabs = tabsAppender(res.data);
+      entryPoint.appendChild(tabs);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+});
 
 export { Tabs, tabsAppender }
