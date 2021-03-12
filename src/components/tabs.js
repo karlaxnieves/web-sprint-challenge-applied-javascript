@@ -46,16 +46,26 @@ const Tabs = (topics) => {
 const entryPoint = document.querySelector(".tabs-container")
 
 const tabsAppender = (selector) => {
-  const menu = document.createElement('div');
-  menu.classList.add("menu")
+  const tabs = document.createElement('div');
   const holder = document.createElement('ul');
-  menu.appendChild(holder);
+  let topics = document.createElement('li');
 
-  array.forEach((item) => {
-    let menuItem = document.createElement('li');
-    menuItem.textContent = item
-    holder.appendChild(menuItem);
-  });
+
+  tabs.classList.add("tabs")
+
+  tabs.appendChild(holder);
+  holder.appendChild(topics);
+
+  topics[0].textContent = selector[0];
+  topics[1].textContent = selector[1];
+  topics[2].textContent = selector[2];
+  topics[3].textContent = selector[3];
+  topics[4].textContent = selector[4];
+
+
+  return tabs;
 }
+
+axio
 
 export { Tabs, tabsAppender }
