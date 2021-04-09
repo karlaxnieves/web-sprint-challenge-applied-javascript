@@ -42,9 +42,9 @@ const Card = (article) => {
   authorPhoto.src = article.authorPhoto;
   authorName.textContent = `By: ${article.authorName}`;
 
-  // card.addEventListener("click", () => {
-  //   card.classList.toggle("headline")
-  // });
+  card.addEventListener("click", () => {
+    card.classList.toggle("headline")
+  });
 
   return card
 
